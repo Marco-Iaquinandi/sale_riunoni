@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrenotaSale • Accesso, Registrazione & Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="meeting.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="auth-active">
+  <main class="app" id="view-auth">
+    <section class="card">
+      <div class="header">
+        <div class="logo">
+          <img class="logo" src="meeting.png" alt="">
+        </div>
+        <div>
+          <h1>PrenotaSale</h1>
+          <p>Accedi o crea un account per prenotare le sale riunioni.</p>
+        </div>
+      </div>
+      <div class="body">
+        <div class="tabs" role="tablist" aria-label="Seleziona pannello">
+          <div class="tab active" role="tab" aria-selected="true" tabindex="0" data-tab="login">Accesso</div>
+          <div class="tab" role="tab" aria-selected="false" tabindex="-1" data-tab="register">Registrazione</div>
+        </div>
+
+        <form id="form-login" autocomplete="on" novalidate>
+          <div class="row">
+            <label for="login-email">Email</label>
+            <input id="login-email" name="email" type="email" inputmode="email" placeholder="nome@azienda.it" required />
+          </div>
+          <div class="row">
+            <label for="login-password">Password</label>
+            <div class="input">
+              <input id="login-password" name="password" type="password" placeholder="••••••••" minlength="6" required />
+              <button type="button" class="pwd-toggle" data-target="login-password" aria-label="Mostra/Nascondi password">Mostra</button>
+            </div>
+          </div>
+          <div class="actions">
+            <label class="help"><input type="checkbox" id="remember-me" /> Ricordami</label>
+            <div style="display:flex; gap:10px; align-items:center">
+              <div class="spinner" id="spinner-login" aria-hidden="true"></div>
+              <button class="btn primary" type="submit">Accedi</button>
+            </div>
+          </div>
+          <div id="alert-login" class="alert" role="status" aria-live="polite"></div>
+          <div class="divider"></div>
+          <p class="help">Suggerimento: usa una password sicura. Se hai dimenticato la password, contatta l'amministratore.</p>
+        </form>
+
+        <form id="form-register" autocomplete="on" novalidate style="display:none">
+          <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
+            <div>
+              <label for="reg-nome">Nome</label>
+              <input id="reg-nome" name="nome" type="text" placeholder="Mario" required />
+            </div>
+            <div>
+              <label for="reg-cognome">Cognome</label>
+              <input id="reg-cognome" name="cognome" type="text" placeholder="Rossi" required />
+            </div>
+          </div>
+          <div class="row">
+            <label for="reg-cf">Codice Fiscale</label>
+            <input id="reg-cf" name="cf" type="text" placeholder="RSSMRA80A01F205X" required />
+          </div>
+          <div class="row">
+            <label for="reg-email">Email</label>
+            <input id="reg-email" name="email" type="email" inputmode="email" placeholder="nome@azienda.it" required />
+          </div>
+          <div class="row">
+            <label for="reg-telefono">Telefono</label>
+            <input id="reg-telefono" name="numero_tel" type="tel" inputmode="tel" placeholder="+39 3•• ••• ••••" required />
+          </div>
+          <div class="row" style="display:grid; grid-template-columns:1fr 1fr; gap:14px">
+            <div>
+              <label for="reg-password">Password</label>
+              <div class="input">
+                <input id="reg-password" name="password" type="password" placeholder="Minimo 6 caratteri" minlength="6" required />
+                <button type="button" class="pwd-toggle" data-target="reg-password" aria-label="Mostra/Nascondi password">Mostra</button>
+              </div>
+            </div>
+            <div>
+              <label for="reg-password2">Conferma password</label>
+              <div class="input">
+                <input id="reg-password2" type="password" placeholder="Ripeti password" minlength="6" required />
+                <button type="button" class="pwd-toggle" data-target="reg-password2" aria-label="Mostra/Nascondi password">Mostra</button>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <span class="help">Registrandoti accetti i Termini & Privacy.</span>
+            <div style="display:flex; gap:10px; align-items:center">
+              <div class="spinner" id="spinner-register" aria-hidden="true"></div>
+              <button class="btn primary" type="submit">Crea account</button>
+            </div>
+          </div>
+          <div id="alert-register" class="alert" role="status" aria-live="polite"></div>
+        </form>
+
+        <div class="footer">© <span id="year"></span> <span class="brand">PrenotaSale</span>. Tutti i diritti riservati.</div>
+      </div>
+    </section>
+
+    <aside class="hero">
+      <h2>Gestisci le sale riunioni<br>con semplicità</h2>
+      <p>Prenota la tua sala in modo pratico e veloce, ricevi le opportune notifiche e controlla la disponibilità in tempo reale.</p>
+      <div class="bullet"><div class="dot"></div><div>Registrati o accedi al sito.</div></div>
+      <div class="bullet"><div class="dot"></div><div>Ricerca la sala piu adatta alle tue necessità.</div></div>
+      <div class="bullet"><div class="dot"></div><div>Prenota in modo semplice ed intuitivo</div></div>
+      <div class="bullet"><div class="dot"></div><div>Annulla la tua prenotazione quando vuoi</div></div>
+    </aside>
+  </main>
+
+  <section id="page-test" class="card">
+    <div class="header">
+        <div class="logo">
+          <img class="logo" src="meeting.png" alt="">
+        </div>
+      <div>
+        <h1>Dashboard Utente</h1>
+        <p>Prenota sale e gestisci le tue riunioni.</p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="topbar">
+        <div>
+          <div class="welcome-message">
+            Benvenuto, <span id="test-user" style="font-weight:700">—</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center">
+          <button id="btn-logout" class="btn" style="background:#1f2937; color:#e5e7eb; border-color:rgba(255,255,255,.12)">Esci</button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <section class="card" style="background:transparent; border:1px solid rgba(255,255,255,.07);">
+        <div class="body">
+          <h3 style="margin:0 0 12px 0">Verifica e Prenota Sala</h3>
+          <div class="grid-4">
+            <div class="row">
+              <label for="rooms-capienza">Capienza minima</label>
+              <input id="rooms-capienza" type="number" min="1" placeholder="Min. 4 persone" />
+            </div>
+            <div class="row">
+              <label for="rooms-data">Data</label>
+              <input id="rooms-data" type="date" />
+            </div>
+            <div class="row">
+              <label for="rooms-inizio">Inizio</label>
+              <input id="rooms-inizio" type="time" step="3600" />
+            </div>
+            <div class="row">
+              <label for="rooms-fine">Fine</label>
+              <input id="rooms-fine" type="time" step="3600" />
+            </div>
+          </div>
+          <div class="grid-2" style="margin-top:10px">
+            <div class="row">
+              <label for="rooms-partecipanti">Partecipanti previsti</label>
+              <input id="rooms-partecipanti" type="number" min="1" placeholder="Totale 10 persone" />
+            </div>
+<!--             <div class="row">
+              <label for="cf-utente">CF utente *</label>
+              <input id="cf-utente" type="text" placeholder="CF per la prenotazione" />
+            </div> -->
+          </div>
+          <div class="actions" style="margin-top:12px">
+            <div class="help">Seleziona data e orario per vedere le disponibilità.</div> 
+            <div style="display:flex; gap:10px; align-items:center">
+              <div class="spinner" id="spinner-sale" aria-hidden="true"></div>
+              <button class="btn primary" id="btn-cerca-sale" type="button">Cerca sale disponibili</button>
+            </div>
+          </div>
+          <div id="alert-sale" class="alert" role="status" aria-live="polite" style="display:none"></div>
+          <div class="divider"></div>
+          <div id="rooms-results"><div class="help">I risultati appariranno qui.</div></div>
+        </div>
+      </section>
+
+      <section class="card" style="background:transparent; border:1px solid rgba(255,255,255,.07);">
+        <div class="body">
+          <h3 style="margin:0 0 12px 0">Timbra Fine Riunione (Checkout)</h3>
+          <div class="grid-2">
+            <div class="row">
+              <label for="chk-code">Codice prenotazione</label>
+              <input id="chk-code" type="text" placeholder="Inserisci il codice unico della prenotazione" />
+            </div>
+          </div>
+          <div class="actions" style="margin-top:12px">
+            <div class="help">Conferma la fine della riunione per liberare la sala.</div> 
+            <div style="display:flex; gap:10px; align-items:center">
+              <div class="spinner" id="spinner-chk" aria-hidden="true"></div>
+              <button class="btn primary" id="btn-checkout" type="button">Timbra checkout</button>
+            </div>
+          </div>
+          <div id="alert-chk" class="alert" role="status" aria-live="polite" style="display:none"></div>
+        </div>
+      </section>
+
+      <section class="card" style="background:transparent; border:1px solid rgba(255,255,255,.07);">
+        <div class="body">
+          <h3 style="margin:0 0 12px 0">Annulla Prenotazione</h3>
+          <div class="grid-2">
+            <div class="row">
+              <label for="del-code">Codice prenotazione</label>
+              <input id="del-code" type="text" placeholder="Inserisci il codice unico della prenotazione da annullare" />
+            </div>
+          </div>
+          <div class="actions" style="margin-top:12px">
+            <div class="help">Questa azione annulla la prenotazione in modo permanente.</div> 
+            <div style="display:flex; gap:10px; align-items:center">
+              <div class="spinner" id="spinner-del" aria-hidden="true"></div>
+              <button class="btn primary" id="btn-delete" type="button">Annulla prenotazione</button>
+            </div>
+          </div>
+          <div id="alert-del" class="alert" role="status" aria-live="polite" style="display:none"></div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
